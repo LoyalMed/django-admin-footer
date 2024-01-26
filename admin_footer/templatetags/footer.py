@@ -22,7 +22,7 @@ class AdminFooterNode(template.Node):
     def render(self, context):
         data = getattr(settings, 'ADMIN_FOOTER_DATA', {
             'period': datetime.now().year
-        })
+        }).copy()
         if context['request'].user.is_staff is False:
             data.pop('version', None)
 
